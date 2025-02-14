@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+body {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ccc;
+    overflow: hidden;
+}
+.row {
+    display: flex;
+    height: 2.8vmax;
+}
+.row:nth-child(odd) {
+    transform: translateX(5vmax);
+}
+
+
+
+.cube {
+    position: relative;
+    font-size: 10vmax;
+    width: 1em;
+    height: .855em;
+    animation: colors 10s linear infinite;
+    transition: all .5s;
+    transition-timing-function: cubic-bezier(0, .02, .05, .1, .3, .45, .5, 1);
+}
+.cube .cube__side {
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    scale: .558;
+    transition: all 1s;
+    outline: 1px solid;
+}
+.cube .cube__top {
+    background: #fff;
+    transform: rotate(-45deg) skew(15deg, 15deg) translate(86%, -86%);
+}
+.cube .cube__left {
+    background: #ddd;
+    transform: rotate(15deg) skew(15deg, 15deg) translate(-50%, 13%);
+}
+.cube .cube__right {
+    background: #eee;
+    transform: rotate(-15deg) skew(-15deg, -15deg) translate(50%, 13%);
+}
+.cube:hover .cube__side {
+    transition: all 0s;
+}
+.cube:hover .cube__top {
+    background: #f88;
+}
+.cube:hover .cube__left {
+    background: #d88;
+}
+.cube:hover .cube__right {
+    background: #e88;
+}
+.cube.clicked {
+    transition: all .5s;
+    transition-timing-function: cubic-bezier(0, .5, .65, .8, .85, .9, .95, 1);
+    transform: translateY(-100%);
+}
+@keyframes colors {
+    to {
+        filter: hue-rotate(359deg);
+    }
+}
